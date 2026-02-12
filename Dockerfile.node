@@ -1,0 +1,20 @@
+FROM node:18
+#use base image which is node.js version 18
+
+WORKDIR /app
+#create folder inside the container called /app
+
+COPY package.json .
+#copy all dependencies from package.json to the container
+
+RUN npm install
+#install express from the package.json
+
+COPY server.js .
+#copy server.js (app data) into the container
+
+EXPOSE 3000
+#tell the docker that the app uses port 3000
+
+CMD ["npm","start"]
+#run container when the app starts
